@@ -7,9 +7,8 @@
  Посмотрите как работает forEach и повторите это поведение для массива, который будет передан в параметре array
 
  Пример:
-   forEach([1, 2, 3], (el) => console.log(el))
- */
-
+   forEach([1, 2, 3], (el) => console.log(e//
+*/
 //  Сделал сам ↓
 //  var numbers = [1,2,3,4];
 
@@ -44,9 +43,11 @@ function forEach(array, fn) {
 
 function map(array, fn) {
   const mass = [];
+
   for (let i = 0; i < array.length; i++) {
-    mass.push(fn(array[i], i, array));
+    mass[i] = fn(array[i], i, array);
   }
+
   return mass;
 }
 
@@ -69,14 +70,13 @@ function map(array, fn) {
 //  console.log(result);
 
 function reduce(array, fn, initial) {
-  let x = initial || array[0],
-    i = initial ? 0 : 1;
+  const hasInitial = typeof initial !== 'undefined';
+  let prev = hasInitial ? initial : array[0];
 
-  for (; i < array.length; i++) {
-    x = fn(x, array[i], i, array);
+  for (let i = hasInitial ? 0 : 1; i < array.length; i++) {
+    prev = fn(prev, array[i], i, array);
   }
-
-  return x;
+  return prev;
 }
 /*
  Задание 4:
@@ -88,13 +88,14 @@ function reduce(array, fn, initial) {
  */
 
 function upperProps(obj) {
-  const arr = [];
-  for (let key in obj) {
-    key = key.toUpperCase();
-    arr.push(key);
+  const props = [];
+
+  for (const name in obj) {
+    props.push(name.toUpperCase());
   }
-  return arr;
+  return props;
 }
+
 /*
  Задание 5 *:
 
