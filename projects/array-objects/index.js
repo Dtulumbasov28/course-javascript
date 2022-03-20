@@ -45,7 +45,7 @@ function map(array, fn) {
   const mass = [];
 
   for (let i = 0; i < array.length; i++) {
-    mass[i] = fn(array[i], i, array);
+    mass.push(fn(array[i], i, array));
   }
 
   return mass;
@@ -88,12 +88,12 @@ function reduce(array, fn, initial) {
  */
 
 function upperProps(obj) {
-  const props = [];
-
-  for (const name in obj) {
-    props.push(name.toUpperCase());
+  const arr = [];
+  for (let key in obj) {
+    key = key.toUpperCase();
+    arr.push(key);
   }
-  return props;
+  return arr;
 }
 
 /*
