@@ -13,7 +13,7 @@
 
 function createDivWithText(text) {  
   const div = document.createElement('div');
-  div.textContent = 'loftschool';
+  div.textContent = text;
   return div;
 }
 
@@ -124,7 +124,7 @@ function deleteTextNodesRecursive(where) {
   for (let i = 0; i < where.childNodes.length; i++) {
     const el = where.childNodes[i];
 
-    if (nodeType === 3) {
+    if (el.nodeType === 3) {
       where.removeChild(el);
       i--;
     } else if (el.nodeType === 1) {
