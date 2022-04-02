@@ -14,7 +14,7 @@ function addListener(eventName, target, fn) {
 
 /*
  Задание 2:
-
+ 
  Функция должна удалять у элемента target обработчик fn события eventName
 
  Пример:
@@ -47,7 +47,7 @@ function skipDefault(eventName, target) {
    emulateClick(document.querySelector('a')) // для указанного элемента должно быть симулировано события click
  */
 function emulateClick(target) {
-  target.addEventListener.click();
+  target.dispatchEvent(new MouseEvent('click'));
 }
 
 /*
@@ -60,8 +60,8 @@ function emulateClick(target) {
    delegate(document.body, () => console.log('кликнули на button')) // добавит такой обработчик кликов для body, который будет вызывать указанную функцию только если кликнули на кнопку (элемент с тегом button)
  */
 function delegate(target, fn) {
-  target.addEventListener('click', function () {
-    if (target.tagName === 'BUTTON') {
+  target.addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') {
       fn();
     }
   });
