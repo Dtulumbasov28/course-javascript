@@ -47,6 +47,7 @@ export function createDiv() {
   div.style.left = random(0, window.innerWidth) + 'px';
   div.style.width = random(minSize, maxSize) + 'px';
   div.style.height = random(minSize, maxSize) + 'px';
+  div.style.zIndex = '+1';
 
   div.addEventListener('mousedown', (e) => {
     currentDrag = div;
